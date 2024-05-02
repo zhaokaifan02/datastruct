@@ -83,8 +83,18 @@ void seqListPushFront(SeqList *psl,SLDataType val)
             return;
         }
     }
-
+    //整型提升
+    /*
+    int end =  -1;
+    size_t pos = 0;
+    if(end>=pos) //会向上提升 int提升到size_t
+    {
+        end -1的机器码是 111111111全1，提升到无符号就说 2^n-1特别大，所以返回true
+        或者书11111111比00000000在二进制上更大 比较器
+    }
+    */
     //开始插入
+    
     for(int i = psl->size;i>0;i--)
     {
         psl->a[i] = psl->a[i-1];
@@ -169,4 +179,18 @@ void seqListErase(SeqList* psl, int index)
         begin++;
     }
     psl->size--;
+}   
+
+int seqListFind(SeqList* psl, SLDataType val)
+{
+    int index = -1;
+    for(int i = 0;i<psl->size;i++)
+    {
+        if(psl->a[i]==val)
+        {
+            index = i;
+            return index;
+        }
+    }
+    return index;
 }

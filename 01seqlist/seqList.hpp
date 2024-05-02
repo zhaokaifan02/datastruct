@@ -43,4 +43,16 @@ void seqListInsert(SeqList* psl, int index,SLDataType val);
 //中间删除 O(n)
 void seqListErase(SeqList* psl, int index);
 
+//查找
+int seqListFind(SeqList* psl, SLDataType val);
 
+//menu
+void menu()
+{
+    //todo menu easy
+    printf("*****************************\n");
+    printf("1.尾插数据 2.头插数据\n");
+    printf("2.尾删数据 3.头删数据\n");
+    printf("3.插入数据 2.头插数据\n");
+    printf("*****************************\n");
+}
