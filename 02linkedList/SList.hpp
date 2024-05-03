@@ -40,3 +40,6 @@ void SListDestroy(SListNode** pphead);
 //单链表的意义在于，单链表是复杂数据结构的子结构。
 //如临接表和哈希桶
 //单链表会出很多练习题
+
+
+//203 Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
