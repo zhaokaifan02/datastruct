@@ -104,3 +104,88 @@ void SListPopFront(SListNode** pphead)
         free(p);
     }
 }
+
+SListNode* SListFind(SListNode* phead, SLDataType val)
+{
+    if(phead==nullptr)
+        return nullptr; //返回空
+    SListNode *cur = phead; //规范化
+    while(cur!=nullptr)
+    {
+        if(cur->data==val)
+            return cur;
+        cur = cur->next;
+    }
+    return nullptr;
+}
+void SListInsert(SListNode** pphead, SListNode* pos, SLDataType val)
+{
+    //不需要检查pos是否不存在，一般都是find来的
+    //找到前一个的地址
+    //如果pos == phead
+    if(pos ==*pphead)
+    {
+        SListPushFront(pphead,val);
+    } else {
+        //不是头的话
+        SListNode* pre = *pphead;
+        while(pre->next!=pos)
+        {
+            pre=pre->next;
+        }
+        SListNode *newNode = createSNode(val);
+        newNode->next = pre->next;
+        pre->next = newNode;
+    }
+}
+
+void SListInsertAfter(SListNode* pphead, SListNode* pos, SLDataType val)
+{
+    assert(pos);
+    SListNode* newNode = createSNode(val);
+    newNode->next = pos->next;
+    pos->next = newNode;
+}
+
+//之前的
+void SListErase(SListNode** pphead, SListNode* pos)
+{
+    assert(pphead);
+    assert(pos);
+    if(*pphead ==pos)
+    {
+        free(pos);
+        *pphead = nullptr;
+    } else {
+        SListNode* p = *pphead;
+        while(p->next!=pos)
+        {
+            p=p->next;
+        }
+        p->next = pos->next;
+        free(pos);
+    }
+}
+
+void SListEraseAfter(SListNode** pphead, SListNode* pos)
+{
+    assert(pphead);
+    assert(pos);
+    SListNode* p = pos->next;
+    pos->next = p->next;
+    free(p);
+}
+
+void SListDestroy(SListNode** pphead)
+{
+    assert(pphead);
+    SListNode* p = *pphead;
+    SListNode* t = p;
+    while(p->next!=nullptr)
+    {
+        p = p->next;
+        free(t);
+        t = p;
+    }
+    *pphead = nullptr;
+}   
