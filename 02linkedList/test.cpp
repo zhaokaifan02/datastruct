@@ -389,6 +389,53 @@ int findDuplicate(int* nums, int numsSize) {
     }
     return p;
 }
+//237 Delete Node in a Linked List
+//没有头节点的前提下，删除当前节点
+void deleteNode(struct ListNode* node) {
+    //not a tail
+    struct ListNode* p =node,*p1 = node->next;
+    int t = p ->val;
+    p->val = p1->val;
+    p1->val = t;
+    p->next = p1->next;
+    free(p1);
+    //比较激进的思路
+    // struct ListNode* p =node,*p1 = node->next;
+    // p->val = p->next->val;
+    // p->next = p->next->next; 
+
+
+}
+//138 copy List with a random Pointer
+//顺藤摸瓜
+ struct Node {
+      int val;
+      struct Node *next;
+     struct Node *random;
+ };
+struct Node* copyRandomList(struct Node* head) {
+	struct Node* p = head;
+    //第一遍辅助添加一个node
+    while(p!=NULL)
+    {
+        struct Node* newCode = (struct Node*)malloc(sizeof(struct Node));
+        newCode->val = p->val;
+        newCode->next = p->next;
+        p->next = newCode;
+        p = newCode->next; //插入N1和N2中间
+    }
+    struct Node* cur = head,*pos;
+    //顺藤摸瓜，相对位置不变
+    while(cur!=NULL)
+    {
+        pos = cur->next;  
+        pos->random = cur->random==NULL?NULL:cur->random->next;
+        cur=pos->next;
+        pos->next = cur==NULL?NULL:cur->next;
+    }
+    return head->next;
+
+}
 int main()
 {
     SListNode *phead = nullptr;
