@@ -65,7 +65,7 @@ void ShellSort(int *a, int n)
         gap = gap / 3 + 1; // 确保最后是1
         for (int i = gap; i < n; i++)
         {
-            //每次拿到的是要插入的后一个
+            // 每次拿到的是要插入的后一个
             int end = i;
             int temp = a[end];
             while (end - gap >= 0)
@@ -82,5 +82,42 @@ void ShellSort(int *a, int n)
             }
             a[end] = temp;
         }
+    }
+}
+
+void SelectSort(int *a, int n)
+{
+    int end = n - 1;
+    while (end >= 0)
+    {
+        int p = 0;//当前最大值的下标
+        for (int i = 0; i <=end; ++i)
+        {
+            if (a[p] < a[i])
+                p = i;
+        }
+        Swap(&a[p], &a[end]);
+        end--;
+    }
+}
+void SelectSortImprove(int *a ,int n)
+{
+    //改良了同时找最小和最大
+    int end = n-1;
+    int head = 0;
+    while(head<end)
+    {
+        int small = head,big = end;
+        for(int i = head;i<=end;i++)
+        {
+            if(a[small]>a[i])
+                small = i;
+            if(a[big]<a[i])
+                big = i;
+        }
+        Swap(&a[small],&a[head]);
+        Swap(&a[big],&a[end]);
+        end--;
+        head++;
     }
 }
