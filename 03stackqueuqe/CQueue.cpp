@@ -60,7 +60,7 @@ void myCircularQueueFree(MyCircularQueue* obj) {
 }
 int myCircularQueueSize(MyCircularQueue* obj)
 {
-    return (obj->tail-obj->head) %obj->capacity;
+    return (obj->tail-obj->head+obj->capacity) %obj->capacity;
 }
 //len = tail-head%cap cap = k+1
 /**
