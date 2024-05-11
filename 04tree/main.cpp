@@ -1,4 +1,5 @@
 #include "heap.hpp"
+#include "binaryTree.hpp"
 void testHeap()
 {
     HP hp;
@@ -20,13 +21,19 @@ void testHeap()
     HeapPop(&hp);
     HeapPrint(&hp);
 }
-int main()
+void testHeapSort()
 {
-    int a[8] = {4,2,7,8,5,1,0,6};
+        int a[8] = {4,2,7,8,5,1,0,6};
     HeapSort(a,8);
     for(int i = 0;i<8;++i)
     {
         printf("%d ",a[i]);
     }
     printf("\n");
+}
+int main()
+{
+    BTNode* tree =CreateTree();
+    // PrevOrderStack(tree);
+    printf("%d ", BTreeLevelSize(tree,2));
 }
