@@ -35,5 +35,6 @@ int main()
 {
     BTNode* tree =CreateTree();
     // PrevOrderStack(tree);
-    printf("%d ", BTreeDepth(tree));
+    printf("%d \n", BTreeDepth(tree));
+    printf("%d \n",BTreeFineNode(tree,3)->val);
 }

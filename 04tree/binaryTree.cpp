@@ -138,3 +138,18 @@ int BTreeDepth(BTNode* root)
     int right = BTreeDepth(root->right);
     return left>right?1+left:1+right;
 }
+
+BTNode *BTreeFineNode(BTNode *root, int val)
+{
+    if(root==NULL)
+        return NULL;
+    if(root->val==val)
+        return root;
+    BTNode* left =BTreeFineNode(root->left,val);
+    BTNode* right = BTreeFineNode(root->right,val);
+    if(left!=NULL)
+        return left;
+    if(right!=NULL)
+        return right;
+    return NULL;
+}

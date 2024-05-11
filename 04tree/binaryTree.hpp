@@ -63,3 +63,5 @@ int BTreeLeafSize(BTNode* root);
 int BTreeLevelSize(BTNode* root, int k);
 
 int BTreeDepth(BTNode* root);
+
+BTNode* BTreeFineNode(BTNode* root,int val);
