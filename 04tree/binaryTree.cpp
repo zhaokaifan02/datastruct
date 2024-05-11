@@ -126,3 +126,15 @@ int BTreeLevelSize(BTNode *root, int k)
     //k大于1的话，等价于求左子树的第k-1层+右子树的k-1层
     return BTreeLevelSize(root->left,k-1)+BTreeLevelSize(root->right,k-1);
 }
+
+//深度
+int BTreeDepth(BTNode* root)
+{
+    //空树高度是0
+    if(root==NULL)
+        return 0;
+    
+    int left = BTreeDepth(root->left);
+    int right = BTreeDepth(root->right);
+    return left>right?1+left:1+right;
+}

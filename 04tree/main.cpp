@@ -35,5 +35,5 @@ int main()
 {
     BTNode* tree =CreateTree();
     // PrevOrderStack(tree);
-    printf("%d ", BTreeLevelSize(tree,2));
+    printf("%d ", BTreeDepth(tree));
 }

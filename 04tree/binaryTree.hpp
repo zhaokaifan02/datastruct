@@ -61,3 +61,5 @@ int BTreeLeafSize(BTNode* root);
 
 //第k层的节点个数
 int BTreeLevelSize(BTNode* root, int k);
+
+int BTreeDepth(BTNode* root);
