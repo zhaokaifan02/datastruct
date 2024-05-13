@@ -61,11 +61,21 @@ bool checkSymmetric(struct TreeNode* p,struct TreeNode* q)
     //不等 false
     if(p->val!=q->val)
         return false;
-    //看看p的左树等不等q的右树，p的右树等不等q的左数
+    //看看p的左树等不等q的右树，p的右树等不等q的左数 
     return checkSymmetric(p->left,q->right)&&checkSymmetric(p->right,q->left);
 }
 bool isSymmetric(struct TreeNode* root) {
     if(root==NULL)
         return true;
     return checkSymmetric(root->left,root->right);
+}
+
+//572. Subtree of Another Tree
+bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot) {
+    if(root==NULL || subRoot==NULL)
+        return false;
+    if(isSameTree(root,subRoot)) //如果这个root所在的树和subRoot相同
+        return true;
+    //左边有没有sub的，右边有没有sub的
+    return isSubtree(root->left,subRoot) || isSubtree(root->right,subRoot);
 }
