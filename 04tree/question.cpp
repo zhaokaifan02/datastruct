@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct TreeNode
 {
     int val;
@@ -79,3 +80,27 @@ bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot) {
     //左边有没有sub的，右边有没有sub的
     return isSubtree(root->left,subRoot) || isSubtree(root->right,subRoot);
 }
+
+//最小深度 到叶子节点的最短距离
+//111. Minimum Depth of Binary Tree
+//Given a binary tree, find its minimum depth
+int minDepth(struct TreeNode* root) {
+    if(root==NULL)
+        return 0;
+    if(root->left==NULL &&root->right==NULL)
+        return 1;
+    //这里要判断，如果不是节点且为空的话默认为最大实现一个截断
+    int minLeft=INT_MAX,minRight=INT_MAX;
+    if(root->left)
+        minLeft = minDepth(root->left);
+    if(root->right)
+        minRight = minDepth(root->right);
+    return minLeft>minRight?minRight+1:minLeft+1;
+}
+
+
+//222. Count Complete Tree Nodes
+//Given the root of a complete binary tree, return the number of the nodes in the tree.
+
+//According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+
