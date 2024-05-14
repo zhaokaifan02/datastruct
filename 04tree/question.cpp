@@ -104,3 +104,45 @@ int minDepth(struct TreeNode* root) {
 
 //According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
 
+
+//536 
+//读入一个先序遍历字符串，长度不超过100，通过字符串构建一颗树。
+//并输出他的中序遍历 
+
+struct BTNode {
+    char data;
+    struct BTNode* left;
+    struct BTNode* right;
+};
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct BTNode {
+    char data;
+    struct BTNode* left;
+    struct BTNode* right;
+};
+BTNode* BinaryTreeCreate(char* a, int n, int* pi){
+    //N控制的是这个数组的长度
+    if(a[*pi]=='#') {
+        (*pi)++;
+        return NULL;
+    }
+    BTNode* root = (BTNode*)malloc(sizeof(BTNode));
+    root->data = a[*pi];
+    (*pi)++;
+    root->left = BinaryTreeCreate(a,n,pi);
+    root->right = BinaryTreeCreate(a,n,pi);
+    return root;
+}
+void Inorder(BTNode * root) {
+    if(root==NULL) {
+        return;
+    }
+    Inorder(root->left);
+    printf("%c ", root->data);
+    Inorder(root->right);
+}
+
+     
