@@ -6,3 +6,5 @@ void ShellSort(int *a, int n);
 
 void SelectSort(int *a, int n);
 void SelectSortImprove(int *a ,int n);
+
+void QuickSort(int*a,int n);

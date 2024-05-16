@@ -29,7 +29,13 @@ void testSelectISort()
     SelectSort(arr,10);
     ArrayPrint(arr,10);
 }
+void testQuickISort()
+{
+    int arr[10] = {9 ,1 ,2 ,5 ,7 ,4 ,8 ,6 ,3, 5};
+    QuickSort(arr,10);
+    ArrayPrint(arr,10);
+}
 int main()
 {
-    testSelectISort();
+    testQuickISort();
 }
